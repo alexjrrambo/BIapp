@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.ContaFinanceiraPage">
+  <ContentPage.ToolbarItems>        
+        <ToolbarItem Text="Salvar" Clicked="SalvarClicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" HasUnevenRows="true">                
+                <TableView.Root>
+                    <TableSection Title="Conta para receber seu dinheiro">
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Tipo de conta" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker x:Name="ContaPicker" Margin="0,0,0,3" SelectedItem="{Binding ContaAtual.Pessoa}">
+                                    <Picker.Items>
+                                        <x:String>Pessoa Jurídica</x:String>
+                                        <x:String>Pessoa Física</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Banco" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                  <Picker x:Name="BancoPicker" Margin="0,0,0,3" SelectedItem="{Binding ContaAtual.Banco}">
+                                    <Picker.Items>
+                                        <x:String>Selecione seu banco</x:String>
+                                        <x:String>001 - BANCO DO BRASIL S.A.</x:String>
+                                        <x:String>237 - BANCO BRADESCO S.A.</x:String>
+                                        <x:String>341 - BANCO ITAÚ S.A.</x:String>
+                                        <x:String>104 - CAIXA ECONOMICA FEDERAL</x:String>
+                                        <x:String>033 - BANCO SANTANDER BANESPA S.A.</x:String>
+                                        <x:String>399 - HSBC BANK BRASIL S.A. - BANCO MULTIPLO</x:String>
+                                        <x:String>745 - BANCO CITIBANK S.A.</x:String>
+                                        <x:String>041 - BANCO DO ESTADO DO RIO GRANDE DO SUL S.A.</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Agência" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="agenciaEntry" Placeholder="Agência" Text="{Binding ContaAtual.Agencia_visivel}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" TextChanged="AgenciaTextChanged"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Conta" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="contaEntry" Placeholder="Conta" Text="{Binding ContaAtual.Conta_visivel}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" TextChanged="ContaTextChanged"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>                       
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Favorecido" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Favorecido" Text="{Binding ContaAtual.Favorecido}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>                        
+                    </TableSection>                   
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

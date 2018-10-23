@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.ModelosPage">
+	<ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">                    
+                    <Label Text="Selecione o modelo do seu ar condicionado" HorizontalOptions="Center"></Label>
+                </StackLayout> 
+                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                    <Image x:Name="hiwallImage" Source="hiwall.png" HeightRequest="60"></Image>
+                    <Label Text="Hi-Wall" FontSize="14" HorizontalOptions="Center"></Label>
+                </StackLayout>                
+                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0">
+                    <Image x:Name="casseteImage" Source="cassete.png" HeightRequest="60"></Image>
+                    <Label Text="Cassete" FontSize="14" HorizontalOptions="Center"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="0">                                    
+                    <Image x:Name="pisoImage" Source="piso.png" HeightRequest="60"></Image>
+                    <Label Text="Piso Teto" FontSize="14" HorizontalOptions="Center"></Label>                                    
+                </StackLayout> 
+             </Grid>
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

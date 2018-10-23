@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.ReservarPage">
+
+    <ContentPage.ToolbarItems>        
+        <ToolbarItem x:Name="reservarToobarButton" Text="Reservar" Clicked="ReservaClicked" />
+    </ContentPage.ToolbarItems>    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">                    
+                        <Label Text="Modelo"></Label>
+                        <Image x:Name="modeloImage" HeightRequest="40"></Image>
+                        <Label x:Name="modeloText" Text="" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                     <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">                    
+                        <Label Text="Valor"></Label>
+                        <Label x:Name="precoOrcado" Text="{Binding Preco_orcado}" FontSize="20" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <TableView x:Name="reservarTabelView" Intent="Form" HasUnevenRows="true">                
+                <TableView.Root>
+                    <TableSection Title="Informações do serviço">       
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf124;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="BTU do seu ar condicionado" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                <Picker x:Name="Capacidade" Title="Selecione a capacidade/BTU" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" VerticalOptions="Center" SelectedIndexChanged="BtuSelectedIndexChanged"></Picker>                                    
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf124;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Qual serviço?" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                <Picker x:Name="Servico" Title="Selecione o serviço" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" VerticalOptions="Center" SelectedIndexChanged="ServicoSelectedIndexChanged">
+                                    <Picker.Items>
+                                        <x:String>Instalação</x:String>
+                                        <x:String>Higienização</x:String>
+                                    </Picker.Items>
+                                </Picker>                                    
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Tipo de residência" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                <Picker x:Name="Tipo" SelectedIndex="0" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" VerticalOptions="Center">
+                                    <Picker.Items>
+                                        <x:String>Casa</x:String>
+                                        <x:String>Apartamento</x:String>
+                                    </Picker.Items>
+                                </Picker> 
+                            </StackLayout>
+                        </ViewCell>  
+                        
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf133;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Data desejada" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="DataInvisivel" IsVisible="false"></Entry>                               
+                                    <DatePicker x:Name="DataVisivel" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Format="dd/MM/yyyy"></DatePicker>        
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf017;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Hora do serviço" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="HoraInvisivel" IsVisible="false"></Entry>
+                                    <TimePicker x:Name="HoraVisivel" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Format="HH:mm"></TimePicker>
+                            </StackLayout>
+                        </ViewCell>  
+
+                        
+                    </TableSection>
+                    <TableSection Title="Seu endereço">
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf124;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="CEP" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="cepEntry" Placeholder="CEP" Text="" HorizontalOptions="FillAndExpand" TextChanged="CepTextChanged" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Estado" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                <Picker x:Name="estadoPicker" Title="Selecione um estado" Margin="0,0,0,3" ItemsSource="{Binding EstadoLista}" ItemDisplayBinding="{Binding Nom_estado}" SelectedItem="{Binding EstadoSelecionado}" SelectedIndexChanged="SelectedIndexChangedEstado"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker x:Name="cidadePicker" Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeLista}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding CidadeSelecionada}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+                        
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf018;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Rua" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="ruaEntry" Placeholder="Rua" Text="" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf163;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Número" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="numeroEntry" Placeholder="Número" Text="" HorizontalOptions="FillAndExpand" TextChanged="NumeroTextChanged" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Bairro" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="bairroEntry" Placeholder="Bairro" Text="" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+
+        <ContentView AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                x:Name="carregandoContent"
+                IsVisible="false"
+                BackgroundColor="Silver" Opacity="0.2">
+            </ContentView>
+            <ActivityIndicator x:Name="carregandoIndicator"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+        </AbsoluteLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

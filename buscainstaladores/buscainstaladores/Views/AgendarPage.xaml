@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.AgendarPage">
+    <ContentPage.ToolbarItems>        
+        <ToolbarItem x:Name="reservarToobarButton" Text="Reservar" Clicked="SalvarClicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <TableView x:Name="agendarTabelView" Intent="Form" HasUnevenRows="true">                
+                <TableView.Root>
+                    <TableSection Title="Informações do serviço">
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Descreva o serviço" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Ex. Instalação ar cond. 9000.." Text="{Binding AgendaAtual.Titulo}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+                        
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf133;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Data do serviço" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="DataInvisivel" IsVisible="false" Text="{Binding AgendaAtual.Dtevento}"></Entry>                               
+                                    <DatePicker x:Name="DataVisivel" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Format="dd/MM/yyyy" DateSelected="DateSelectedData"></DatePicker>        
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf017;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Hora do serviço" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="HoraInvisivel" IsVisible="false" Text="{Binding AgendaAtual.Hora}"></Entry>
+                                    <TimePicker x:Name="HoraVisivel" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Format="HH:mm" Unfocused="UnfocusedHora"></TimePicker>
+                            </StackLayout>
+                        </ViewCell>                                              
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf155;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Valor do serviço" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="valorEntry" Placeholder="Valor" Text="{Binding AgendaAtual.Valor}" HorizontalOptions="FillAndExpand" TextChanged="ValorTextChanged" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Endereço do cliente">
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf124;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="CEP" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="cepEntry" Placeholder="CEP" Text="{Binding AgendaAtual.Cep}" HorizontalOptions="FillAndExpand" TextChanged="CepTextChanged" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Estado" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                <Picker Title="Selecione um estado" Margin="0,0,0,3" ItemsSource="{Binding EstadoAgenda}" ItemDisplayBinding="{Binding Nom_estado}" SelectedItem="{Binding EstadoSelecionado}" SelectedIndexChanged="SelectedIndexChangedEstado"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding CidadeSelecionada}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+                        
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf018;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Rua" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Rua" Text="{Binding AgendaAtual.Endereco}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf163;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Número" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="numeroEntry" Placeholder="Número" Text="{Binding AgendaAtual.Numero}" HorizontalOptions="FillAndExpand" TextChanged="NumeroTextChanged" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Bairro" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Bairro" Text="{Binding AgendaAtual.Bairro}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Tipo de residência" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Tipo de residência" Text="{Binding AgendaAtual.Tipo_residencia}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>                        
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+            <ContentView AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                x:Name="carregandoContent"
+                IsVisible="false"
+                BackgroundColor="Silver" Opacity="0.2">
+            </ContentView>
+            <ActivityIndicator x:Name="carregandoIndicator"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+        </AbsoluteLayout>
+        
+	</ContentPage.Content>
+</ContentPage>

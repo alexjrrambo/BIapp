@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:services="clr-namespace:buscainstaladores.Services;assembly=buscainstaladores" x:Class="buscainstaladores.Views.PerfilInstaladorPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <services:PrecoConverter x:Key="PrecoConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>   
+            <Label x:Name="idInstaladorLabel" IsVisible="false" Text="{Binding InstaladorAtual.Id}"></Label>
+            <TableView x:Name="perfilTable" Intent="Menu" HasUnevenRows="true">                        
+                <TableView.Root>                    
+                    <TableSection>
+                        <ViewCell>                        
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>                                
+                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Image Source="{Binding InstaladorAtual.FotoPerfil}" HeightRequest="160" Aspect="AspectFill" HorizontalOptions="Center"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Label Text="{Binding InstaladorAtual.Nome_fantasia}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0">
+                                    <Image x:Name="imageAvaliacao" Source="{Binding InstaladorAtual.RatingImage}" WidthRequest="100" HeightRequest="20"></Image>
+                                    <Label Text="{Binding InstaladorAtual.AvaliacaoString}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                                    <Label Text="Empresa localizada em:" FontSize="11" VerticalOptions="Center" LineBreakMode="NoWrap" />
+                                    <Label Text="{Binding InstaladorAtual.LocalString}" FontSize="11" VerticalOptions="Center" LineBreakMode="NoWrap" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="colunaEsquerda" Width="*"></ColumnDefinition>
+                                    <ColumnDefinition x:Name="colunaCentro" Width="*"></ColumnDefinition>
+                                    <ColumnDefinition x:Name="colunaDireita" Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout x:Name="reservarImage" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                    <!--<BoxView Color="Blue"></BoxView>-->
+                                    <Image Source="reservar.png" WidthRequest="35" HeightRequest="35"></Image>
+                                    <Label Text="Reservar" FontSize="10" HorizontalOptions="Center"></Label>
+                                </StackLayout>                
+                                <StackLayout x:Name="fotosImage" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                    <!--<BoxView Color="Green"></BoxView>-->
+                                    <Image Source="foto.png" WidthRequest="35" HeightRequest="35"></Image>
+                                    <Label Text="Fotos" FontSize="10" HorizontalOptions="Center"></Label>
+                                </StackLayout>
+                                <StackLayout x:Name="mensagemImage" Orientation="Vertical" Grid.Row="0" Grid.Column="2">
+                                    <!--<BoxView Color="Yellow"></BoxView>-->
+                                    <Image Source="mensagem.png" WidthRequest="35" HeightRequest="35"></Image>
+                                    <Label Text="Mensagem" FontSize="10" HorizontalOptions="Center"></Label>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Preços dos serviços">
+                        <ViewCell>                       
+                             <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="350"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                    <Image x:Name="hiwallImage" Source="hiwall.png" HeightRequest="40" BackgroundColor="#ECECEC"></Image>
+                                    <Label Text="Hi-Wall" FontSize="10" HorizontalOptions="Center"></Label>
+                                </StackLayout>                
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                    <Image x:Name="casseteImage" Source="cassete.png" HeightRequest="40"></Image>
+                                    <Label Text="Cassete" FontSize="10" HorizontalOptions="Center"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="2">                                    
+                                    <Image x:Name="pisoImage" Source="piso.png" HeightRequest="40"></Image>
+                                    <Label Text="Piso Teto" FontSize="10" HorizontalOptions="Center"></Label>                                    
+                                </StackLayout>                                
+
+                                <ListView x:Name="PrecoHiwall" HasUnevenRows="true" ItemsSource="{Binding ListaPrecosHiwall}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" IsVisible="true">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>                        
+                                            <ViewCell>
+                                                <Grid Padding="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="Ar Condicionado" FontSize="10"></Label>
+                                                        <Label Text="{Binding Btu}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="Higienização" FontSize="10"></Label>
+                                                        <Label Text="{Binding Preco_h, Converter={StaticResource PrecoConverter}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2">
+                                                        <Label Text="Instalação" FontSize="10"></Label>
+                                                        <Label Text="{Binding Preco, Converter={StaticResource PrecoConverter}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>   
+
+                                <ListView x:Name="PrecoCassete" HasUnevenRows="true" ItemsSource="{Binding ListaPrecosCassete}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" IsVisible="false">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>                        
+                                            <ViewCell>
+                                                <Grid Padding="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="Ar Condicionado" FontSize="10"></Label>
+                                                        <Label Text="{Binding Btu}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="Higienização" FontSize="10"></Label>
+                                                        <Label Text="{Binding Preco_h, Converter={StaticResource PrecoConverter}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2">
+                                                        <Label Text="Instalação" FontSize="10"></Label>
+                                                        <Label Text="{Binding Preco, Converter={StaticResource PrecoConverter}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>   
+
+                                <ListView x:Name="PrecoPiso" HasUnevenRows="true" ItemsSource="{Binding ListaPrecosPiso}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" IsVisible="false">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>                        
+                                            <ViewCell>
+                                                <Grid Padding="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="Ar Condicionado" FontSize="10"></Label>
+                                                        <Label Text="{Binding Btu}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="Higienização" FontSize="10"></Label>
+                                                        <Label Text="{Binding Preco_h, Converter={StaticResource PrecoConverter}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2">
+                                                        <Label Text="Instalação" FontSize="10"></Label>
+                                                        <Label Text="{Binding Preco, Converter={StaticResource PrecoConverter}" FontSize="12"></Label>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView> 
+                                
+                            </Grid>
+                        </ViewCell>                      
+                    </TableSection>                    
+                    <TableSection x:Name="descricaoSection" Title="Descrição da empresa">
+                        <ViewCell>                       
+                             <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="0"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <StackLayout>
+                                        <Label Text="{Binding InstaladorAtual.Descricao}"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>                      
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+        
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:services="clr-namespace:buscainstaladores.Services;assembly=buscainstaladores" x:Class="buscainstaladores.Views.PrecosPage" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <services:PrecoConverter x:Key="PrecoConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>        
+        <ToolbarItem Text="Salvar" Command="{Binding CommandSalvaPrecos}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Vertical">                
+                <StackLayout Padding="10">                                        
+                    <Picker x:Name="ModeloFiltro" SelectedItem="{Binding FiltroSelecionado}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" VerticalOptions="Center" SelectedIndexChanged="FiltroModeloSelected">
+                        <Picker.Items>
+                            <x:String>Hi-wall</x:String>
+                            <x:String>Cassete</x:String>
+                            <x:String>Piso-teto</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+            </StackLayout>
+            
+            <ListView x:Name="PrecosList" HasUnevenRows="true" ItemsSource="{Binding ListaPrecos}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>                        
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Potência " VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                    <Label Text="{Binding Btu}" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                    <Label Text=" BTU" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>         
+                                <Label Text="Preço instalação" VerticalTextAlignment="Center"></Label>
+                                <Entry Placeholder="Instalação" TextChanged="InstalacaoTextChanged" Text="{Binding Preco, Converter={StaticResource PrecoConverter}}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>
+                                <Label Text="Preço higienização" VerticalTextAlignment="Center"></Label>
+                                <Entry Placeholder="Higienização" TextChanged="HigienizacaoTextChanged" Text="{Binding Preco_h}, Converter={StaticResource PrecoConverter}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

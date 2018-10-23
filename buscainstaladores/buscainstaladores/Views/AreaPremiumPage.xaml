@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.AreaPremiumPage">
+   <ContentPage.ToolbarItems>        
+        <ToolbarItem Text="Salvar" Command="{Binding CommandSalvaEdicao}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" HasUnevenRows="true">                
+                <TableView.Root>
+                    <TableSection Title="Mais cidades que você atende">
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade 1" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding Cidade_1_Selecionada}" SelectedIndex="{Binding SelectedIndexCidade1, Mode=TwoWay}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade 2" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding Cidade_2_Selecionada}" SelectedIndex="{Binding SelectedIndexCidade2, Mode=TwoWay}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade 3" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding Cidade_3_Selecionada}" SelectedIndex="{Binding SelectedIndexCidade3, Mode=TwoWay}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                       <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding Cidade_4_Selecionada}" SelectedIndex="{Binding SelectedIndexCidade4, Mode=TwoWay}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Site" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Site da sua empresa" Text="{Binding UsuarioAtual.Site}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Facebook" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Sua pagina do facebook" Text="{Binding UsuarioAtual.Facebook}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Padding="10" x:Name="reservarLayout">
+                                <Button Text="Cancelar assinatura" Clicked="CancelarClicked" BackgroundColor="#2e3842" TextColor="White"></Button>                   
+                            </StackLayout>
+                        </ViewCell>
+
+                    </TableSection>                   
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

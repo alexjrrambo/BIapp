@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.PerfilPage" Title="Perfil">
+	<ContentPage.Content>
+        <StackLayout>
+            <TableView x:Name="usuarioTableView" Intent="Menu">                
+                <TableView.Root>
+                    <TableSection Title="Área do usuário" x:Name="usuarioTableSection">
+                        <ViewCell Tapped="EditarPerfilTapped" x:Name="editarPerfilViewcell" >
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <!--<Image Source="bulb.png" />-->
+                                <Label Text="&#xf007;" FontSize="20" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                                <Label Text="Editar perfil" Margin="20,0,0,0" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="TransferirTapped" x:Name="transferirViewcell">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <!--<Image Source="bulb.png" />-->
+                                <Label Text="&#xf0d6;" FontSize="20" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                                <Label Text="Receber dinheiro" Margin="20,0,0,0" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="FotosTapped" x:Name="fotosViewcell">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <!--<Image Source="bulb.png" />-->
+                                <Label Text="&#xf030;" FontSize="20" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                                <Label Text="Álbum de fotos" Margin="20,0,0,0" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="PremiumTapped" x:Name="premiumViewcell">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <!--<Image Source="bulb.png" />-->
+                                <Label Text="&#xf0a4;" FontSize="20" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                                <Label Text="Área premium" Margin="20,0,0,0" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="LogoutTapped">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Label Text="&#xf00d;" FontSize="20" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                                <Label Text="Sair" Margin="20,0,0,0" />                                
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

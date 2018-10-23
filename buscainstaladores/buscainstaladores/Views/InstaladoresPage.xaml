@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.InstaladoresPage">
+	<ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="semRegistroLayout" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="true" Padding="15, 5, 15, 5">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="&#xf119;" FontSize="50" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Não foram encontrados instaladores para a cidade informada."></Label>
+            </StackLayout>
+            
+            <ListView x:Name="InstaladoresList" HasUnevenRows="true" ItemsSource="{Binding ListaInstaladores}" ItemTapped="InstaladorTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>                       
+                        <ViewCell>
+                            <StackLayout Padding="15, 5, 15, 5" Orientation="Horizontal">                                
+                                <Image Source="{Binding FotoPerfil}" WidthRequest="100" HeightRequest="80" Aspect="AspectFill"></Image>      
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding RatingImage}" WidthRequest="100" HeightRequest="20"></Image>
+                                        <Image Source="{Binding ImagemPremium}" WidthRequest="25" HeightRequest="10"></Image>                                                                         
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Nome_fantasia}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding LocalString}" VerticalOptions="Center" FontSize="10" LineBreakMode="NoWrap" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">                                        
+                                        <Label Text="{Binding StringPrecos}" VerticalOptions="Center" FontSize="10" LineBreakMode="NoWrap" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+	</ContentPage.Content>
+</ContentPage>

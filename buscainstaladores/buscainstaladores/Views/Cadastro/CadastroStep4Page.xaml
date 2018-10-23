@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.Cadastro.CadastroStep4Page">
+	<ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="background.png" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" /> 
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="30" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >                 
+                      
+                <Label Text="Endereço da sua empresa"></Label>
+                <Entry x:Name="cepEntry" Placeholder="CEP" TextChanged="CepTextChanged"></Entry>
+                <Picker x:Name="estadoPicker" Title="Selecione um estado" Margin="0,0,0,3" ItemsSource="{Binding EstadoAgenda}" ItemDisplayBinding="{Binding Nom_estado}" SelectedIndexChanged="SelectedIndexChangedEstado" SelectedItem="{Binding EstadoSelecionado}"></Picker>
+                <Picker x:Name="cidadePicker" Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding CidadeSelecionada}"></Picker>
+                <Entry x:Name="ruaEntry" Placeholder="Rua"></Entry>       
+                <Entry x:Name="numeroEntry" Placeholder="Número" TextChanged="NumeroTextChanged"></Entry>
+                <Entry x:Name="bairroEntry" Placeholder="Bairro"></Entry>    
+                <Label x:Name="labelMensagem" Text="" HorizontalOptions="Center" FontSize="14" TextColor="Gray" Margin="0,10,0,0" />
+                <Button Text="Continuar" Clicked="ContinuarClicked" BackgroundColor="#2e3842" TextColor="White"/>
+            </StackLayout>     
+        </AbsoluteLayout> 
+	</ContentPage.Content>
+</ContentPage>

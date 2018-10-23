@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.MensagemPage" Title="Mensagens">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="semRegistroLayout" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="true" Padding="15, 5, 15, 5">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="&#xf119;" FontSize="50" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Você ainda não possui mensagens."></Label>
+            </StackLayout>
+            
+            <ListView x:Name="MensagensList" HasUnevenRows="true" ItemsSource="{Binding ListaMensagens}" ItemTapped="ConversaTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<ImageCell ImageSource="conversa.png" Text="{Binding Destinatario}" Detail="{Binding Texto}"></ImageCell>-->
+                            <!--
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Exlcuir" Command="{Binding Source={x:Reference TelaPrincipal}, Path=BindingContext.CommandExcluirTarefa}" CommandParameter="{Binding .}"></MenuItem>
+                                <MenuItem Text="Editar" Command="{Binding Source={x:Reference TelaPrincipal}, Path=BindingContext.CommandEditarTarefa}" CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
+                            -->
+                        <ViewCell>
+                            <StackLayout Padding="15, 5, 15, 5" Orientation="Horizontal">
+                                <Image Source="conversa.png" />
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Destinatario}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  />
+                                        <Label Text="{Binding Data_visivel}" VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End"  FontSize="12" />
+                                    </StackLayout>
+                                    <Label Text="{Binding Texto}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                                                                    
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.BuscarPage" Title="Pesquisar">
+	<ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="background.png" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" /> 
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" VerticalOptions="CenterAndExpand" Padding="30">
+                <Label Text="buscaInstaladores.com" FontAttributes="Bold" FontSize="23" TextColor="#fcb640" />
+                <Label Text="Comprou e não sabe com quem instalar?" Margin="10,0,0,0" />
+                <Label Text="Nós te ajudamos ;)" Margin="10,0,0,0" />
+                <Picker Title="Selecione um estado" Margin="0,0,0,3" ItemsSource="{Binding EstadoLista}" ItemDisplayBinding="{Binding Nom_estado}" SelectedItem="{Binding EstadoSelecionado}" SelectedIndexChanged="SelectedIndexChangedEstado"></Picker>
+                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeLista}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding CidadeSelecionada}"></Picker>
+                <Button Text="Buscar" Clicked="PesquisarClicked" BackgroundColor="#2e3842" TextColor="White"/>
+                <Label Text="{Binding MensagemErro}" HorizontalOptions="Center" FontSize="14" TextColor="Gray" Margin="0,10,0,0" />
+            </StackLayout>
+
+            <ContentView AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                x:Name="carregandoContent"
+                IsVisible="false"
+                BackgroundColor="Silver" Opacity="0.2">
+            </ContentView>
+            <ActivityIndicator x:Name="carregandoIndicator"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                               IsRunning="false" Color="Black"/>
+            
+        </AbsoluteLayout>        
+	</ContentPage.Content>
+</ContentPage>

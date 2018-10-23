@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+  <AdditionalAndroidResourcePaths>
+    <AdditionalAndroidResourcePath>/Users/alex/.local/share/Xamarin/Xamarin.GooglePlayServices.Base/25.0.0/embedded</AdditionalAndroidResourcePath>
+    <AdditionalAndroidResourcePath>/Users/alex/.local/share/Xamarin/Xamarin.GooglePlayServices.Gcm/25.0.0/embedded</AdditionalAndroidResourcePath>
+  </AdditionalAndroidResourcePaths>
+  <AdditionalJavaLibraryReferences>
+    <AdditionalJavaLibraryReference>/Users/alex/.local/share/Xamarin/Xamarin.GooglePlayServices.Base/25.0.0/embedded/classes.jar</AdditionalJavaLibraryReference>
+    <AdditionalJavaLibraryReference>/Users/alex/.local/share/Xamarin/Xamarin.GooglePlayServices.Gcm/25.0.0/embedded/classes.jar</AdditionalJavaLibraryReference>
+  </AdditionalJavaLibraryReferences>
+  <AdditionalNativeLibraryReferences />
+</Paths>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.SegurancaPage">
+   <ContentPage.ToolbarItems>        
+        <ToolbarItem Text="Salvar" Clicked="SalvarClicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" HasUnevenRows="true">                
+                <TableView.Root>
+                    <TableSection Title="Segurança e login">
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="E-mail" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="emailEntry" Placeholder="Seu e-mail" Text="{Binding UsuarioAtual.Email}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Keyboard="Email"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+                        </TableSection>   
+                        <TableSection Title="Mudar senha">
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Nova senha" VerticalTextAlignment="Center" Margin="0,4,0,0" ></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="senhaInvEntry" IsVisible="false" Placeholder="Sua senha" Text="{Binding UsuarioAtual.Senha}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                                    <Entry x:Name="senhaEntry" Placeholder="Sua nova senha" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" IsPassword="true"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Repitir nova senha" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="repSenhaEntry" Placeholder="Repita sua nova senha" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" IsPassword="true"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>                                              
+                    </TableSection>                   
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

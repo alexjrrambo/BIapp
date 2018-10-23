@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.AvaliacaoPage">
+    <ContentPage.Content>
+        <StackLayout>            
+            <Grid Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>          
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                    <Label Text="Avalie o serviço prestado pelo instalador"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    <Button Text="&#xf068;" FontSize="35" FontFamily="FontAwesome" TextColor="Black" Margin="0,0,10,0" Clicked="SubRatingClicked"></Button> 
+                    <Entry x:Name="ratingLabel" Text="{Binding AvaliacaoAtual.Rating}" IsVisible="false"></Entry>
+                    <Image x:Name="imageAvaliacao" Source="stars3.png" HeightRequest="35"></Image>
+                    <Button Text="&#xf067;" FontSize="35" FontFamily="FontAwesome" TextColor="Black" Margin="10,0,0,0" Clicked="AddRatingClicked"></Button> 
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="0" BackgroundColor="Aqua">
+                    <Editor x:Name="textoEditor" Text="{Binding AvaliacaoAtual.Texto}"></Editor>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="0">
+                    <Button x:Name="buttonConfirmar" Text="Enviar" BackgroundColor="#2e3842" TextColor="White" Command="{Binding CommandSalvarAvaliacao}"></Button>
+                </StackLayout>
+            </Grid>            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

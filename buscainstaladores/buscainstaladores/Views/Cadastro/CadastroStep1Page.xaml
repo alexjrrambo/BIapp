@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.Cadastro.CadastroStep1Page">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="background.png" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" /> 
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="30" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >                 
+                <Button Text="Sou instalador" Clicked="InstaladorClicked" BackgroundColor="#2e3842" TextColor="White"/>
+                <Button Text="Sou consumidor" Clicked="ConsumidorClicked" BackgroundColor="#2e3842" TextColor="White"/>
+            </StackLayout>     
+      </AbsoluteLayout> 
+	</ContentPage.Content>
+</ContentPage>

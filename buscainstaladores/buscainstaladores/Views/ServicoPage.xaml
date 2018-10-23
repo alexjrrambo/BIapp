@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.ServicoPage" x:Name="Agenda" Title="Serviços">    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout x:Name="filtroLayout" Orientation="Vertical">                
+                <StackLayout Padding="10">                    
+                    <DatePicker x:Name="DataFiltro" Date="{Binding DataFiltro}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Format="dd/MM/yyyy" VerticalOptions="Center" DateSelected="FiltroDateSelected"></DatePicker>        
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout x:Name="semRegistroLayout" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="true" Padding="15, 5, 15, 5">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="&#xf119;" FontSize="50" FontFamily="FontAwesome" Margin="10,0,0,0"></Label> 
+                <Label x:Name="semRegLabel" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text=""></Label>
+            </StackLayout>
+            
+            <ListView x:Name="ServicosList" HasUnevenRows="true" ItemsSource="{Binding ListaAgenda}" ItemTapped="AgendaTapped" IsVisible="false">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<ImageCell ImageSource="conversa.png" Text="{Binding Destinatario}" Detail="{Binding Texto}"></ImageCell>-->
+                            <!--
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Exlcuir" Command="{Binding Source={x:Reference TelaPrincipal}, Path=BindingContext.CommandExcluirTarefa}" CommandParameter="{Binding .}"></MenuItem>
+                                <MenuItem Text="Editar" Command="{Binding Source={x:Reference TelaPrincipal}, Path=BindingContext.CommandEditarTarefa}" CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
+                            -->
+                        <ViewCell>                            
+                            <StackLayout Padding="15, 5, 15, 5" Orientation="Horizontal">                                
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding TituloView}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  />
+                                    </StackLayout>
+                                    
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Data: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                                        <Label Text="{Binding Dtevento}" VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                                        <Label Text=" às " VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                                        <Label Text="{Binding Hora}" VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                                    </StackLayout>
+                                    
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding LabelNomeAgenda}" MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding NomeAgenda}" HorizontalTextAlignment="Start" FontSize="12" />
+                                    </StackLayout>                                    
+                                    
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Endereço: " MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding EnderecoView}" HorizontalTextAlignment="Start" FontSize="12" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>                           
+                            
+                        </ViewCell>
+                                                                    
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

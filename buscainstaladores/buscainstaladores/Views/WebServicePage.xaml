@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.WebServicePage">
+	<ContentPage.Content>
+
+    <StackLayout>
+        <Label Text="Buscador de CEP" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+
+        <Entry x:Name="txtCEP" Placeholder="Digite o CEP" Keyboard="Numeric"></Entry>
+        <Button Text="Buscar" Clicked="Handle_Clicked"></Button>
+
+        <Label x:Name="lblResultado"></Label>
+    </StackLayout>
+        
+	</ContentPage.Content>
+</ContentPage>

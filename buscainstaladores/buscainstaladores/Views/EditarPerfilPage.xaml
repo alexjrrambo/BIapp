@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.EditarPerfilPage">
+   <ContentPage.ToolbarItems>        
+        <ToolbarItem Text="Salvar" Clicked="SalvarClicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" HasUnevenRows="true">                
+                <TableView.Root>
+                    <TableSection Title="Dados da conta">
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Primeiro nome" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Seu primeiro nome" Text="{Binding UsuarioAtual.Primeiro_nome}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Último nome" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Seu último nome" Text="{Binding UsuarioAtual.Ultimo_nome}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="CPF" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="cpfEntry" Placeholder="Seu CPF" Text="{Binding UsuarioAtual.Cpf}" TextChanged="CpfTextChanged" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+                        
+                        <ViewCell>                            
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf133;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Data de nascimento" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="DataInvisivel" IsVisible="false" Text="{Binding UsuarioAtual.Data_nascimento}"></Entry>                               
+                                    <DatePicker x:Name="DataVisivel" HorizontalOptions="FillAndExpand" Margin="0,0,0,3" Format="dd/MM/yyyy" DateSelected="DateSelectedData"></DatePicker>        
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Fantasia" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Nome fantasia da sua empresa" Text="{Binding UsuarioAtual.Nome_fantasia}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Razão social" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Razão social da sua empresa" Text="{Binding UsuarioAtual.Razao_social}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf044;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="CNPJ" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="cnpjEntry" Placeholder="CNPJ da sua empresa" Text="{Binding UsuarioAtual.Cnpj}" TextChanged="CnpjTextChanged" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf095;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Telefone" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="telefoneEntry" Placeholder="Telefone da sua empresa" Text="{Binding UsuarioAtual.Telefone}" TextChanged="TelefoneTextChanged" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf10b;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Celular" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="celularEntry" Placeholder="Celular da sua empresa" Text="{Binding UsuarioAtual.Celular}" TextChanged="CelularTextChanged" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf124;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="CEP" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="cepEntry" Placeholder="CEP" Text="{Binding UsuarioAtual.Cep}" TextChanged="CepTextChanged" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+                        
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Estado" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                <Picker Title="Selecione um estado" Margin="0,0,0,3" ItemsSource="{Binding EstadoAgenda}" ItemDisplayBinding="{Binding Nom_estado}" SelectedItem="{Binding EstadoSelecionado}" SelectedIndexChanged="SelectedIndexChangedEstado" SelectedIndex="{Binding SelectedIndexEstado, Mode=TwoWay}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Cidade" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                                                        
+                                <Picker Title="Selecione uma cidade" Margin="0,0,0,3" ItemsSource="{Binding CidadeAgenda}" ItemDisplayBinding="{Binding Nom_cidade}" SelectedItem="{Binding CidadeSelecionada}" SelectedIndex="{Binding SelectedIndexCidade, Mode=TwoWay}"></Picker>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf018;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Rua" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Rua" Text="{Binding UsuarioAtual.Endereco}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf163;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Número" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry x:Name="numeroEntry" Placeholder="Número" Text="{Binding UsuarioAtual.Numero}" TextChanged="NumeroTextChanged" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Bairro" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Bairro" Text="{Binding UsuarioAtual.Bairro}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell>          
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Complemento" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Complemento" Text="{Binding UsuarioAtual.Complemento}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell> 
+
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical"> 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="&#xf111;" FontSize="25" FontFamily="FontAwesome" Margin="10,5,0,0" VerticalTextAlignment="Center"></Label>                                 
+                                    <Label Text="Descrição" VerticalTextAlignment="Center" Margin="0,4,0,0"></Label>
+                                </StackLayout>                                    
+                                    <Entry Placeholder="Descrição da sua empresa" Text="{Binding UsuarioAtual.Descricao}" HorizontalOptions="FillAndExpand" Margin="0,0,0,3"></Entry>                                 
+                            </StackLayout>
+                        </ViewCell> 
+                    </TableSection>                   
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

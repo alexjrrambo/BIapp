@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.TextoGenericoPage">
+	<ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical" x:Name="form">
+                <Label x:Name="labelTitulo"></Label>
+                <Editor x:Name="textoEditor"></Editor>
+                <Button x:Name="button1" BackgroundColor="#2e3842" TextColor="White"></Button>
+                <Button x:Name="button2" Clicked="Button2Clicked" BackgroundColor="#2e3842" TextColor="White"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" x:Name="formMensagem">
+                <Label x:Name="labelMensagem"></Label>
+                <Button x:Name="buttonConfirmar" Text="Ok" Clicked="ButtonConfirmarClicked" BackgroundColor="#2e3842" TextColor="White"></Button>
+            </StackLayout>
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="buscainstaladores.Views.DetalheServicoPage">
+	<ContentPage.Content>    
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>     
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="{Binding AgendaAtual.TituloView}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="Data: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                <Label Text="{Binding AgendaAtual.Dtevento}" VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                <Label Text=" às " VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+                <Label Text="{Binding AgendaAtual.Hora}" VerticalOptions="Center" HorizontalOptions="Start" FontSize="12" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label x:Name="nomeLabel" Text="{Binding AgendaAtual.LabelNomeAgenda}" MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                <Label x:Name="nomeDescLabel" Text="{Binding AgendaAtual.NomeAgenda}" HorizontalTextAlignment="Start" FontSize="12" />
+            </StackLayout>                                    
+            
+            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="Endereço: " MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                <Label Text="{Binding AgendaAtual.EnderecoView}" HorizontalTextAlignment="Start" FontSize="12" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="Valor: " MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                <Label Text="{Binding AgendaAtual.Valor}" HorizontalTextAlignment="Start" FontSize="12" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="Taxa: " MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                <Label x:Name="taxaLabel" Text="{Binding AgendaAtual.Taxa}" HorizontalTextAlignment="Start" FontSize="12" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="Descrição complementar: " MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                <Label Text="{Binding AgendaAtual.Descricao}" HorizontalTextAlignment="Start" FontSize="12" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Text="Situação: " MinimumWidthRequest="70" FontAttributes="Bold" FontSize="12" LineBreakMode="NoWrap" />
+                <Label Text="{Binding AgendaAtual.Situacao}" HorizontalTextAlignment="Start" FontSize="12" />
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
+                <Button x:Name="editarButton" IsVisible="{Binding AgendaAtual.VisibleEditar}" Text="Editar" Clicked="EditarClicked" BackgroundColor="#2e3842" TextColor="White"></Button>
+                <Button x:Name="cancelarButton" IsVisible="{Binding AgendaAtual.VisibleCancelar}" Text="Cancelar" Clicked="CancelarClicked" BackgroundColor="#2e3842" TextColor="White"></Button>
+                <Button x:Name="pagamentoButton" IsVisible="{Binding AgendaAtual.VisiblePagamento}" Text="Realizar Pagamento" Clicked="PagamentoClicked" BackgroundColor="#2e3842" TextColor="White"></Button>
+                <Button x:Name="avaliarButton" IsVisible="{Binding AgendaAtual.VisibleAvaliar}" Text="Avaliar Serviço" Command="{Binding CommandAvaliacao}" BackgroundColor="#2e3842" TextColor="White"></Button>
+                <Button x:Name="confirmarButton" IsVisible="{Binding AgendaAtual.VisibleConfirmar}" Text="Confirmar Serviço" Command="{Binding CommandConfirmar}" BackgroundColor="#2e3842" TextColor="White"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3">                
+                
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3">                
+                
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">                
+                
+            </StackLayout>
+        </Grid>            
+  	</ContentPage.Content>
+</ContentPage>
